@@ -4,8 +4,10 @@
 
 ```shell
 git clone https://github.com/RosenYin/ARIO_dataset_noetic_docker.git
-
+# 确保你本地仓库中的所有子模块（包括嵌套子模块）都被正确初始化和更新。
 git submodule update --init --recursive
+# 子模块中的代码始终与远程仓库的最新版本保持一致
+git submodule update --remote
 ```
 
 ## docker noetic
