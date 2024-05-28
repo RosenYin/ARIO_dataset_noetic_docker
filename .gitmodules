@@ -1,0 +1,3 @@
+[submodule "workspace/ario-tools"]
+	path = workspace/ario-tools
+	url = https://github.com/ario-dataset/ario-tools.git

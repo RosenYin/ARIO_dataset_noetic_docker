@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  noetic:
+    container_name: noetic
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+    privileged: true
+    network_mode: "host"
+    command: /bin/bash
+    volumes:
+      - /dev:/dev
+      # Add more volumes here if needed
+      - ../workspace:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - TZ=Asia/Shanghai
+      - xpack.monitoring.enabled=false
+      - xpack.watcher.enabled=false
+      - DISPLAY=$DISPLAY
+      - GDK_SCALE
+      - GDK_DPI_SCALE
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10m
+      timeout: 20s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50M"
+        max-file: "10"
+    tty: true
+
